@@ -6,7 +6,7 @@ const animelistdata = AnimeListData.create()
 const AnimeItemList = () => {
     return (
         <div>
-            <button onClick={animelistdata.getAnimeList(1)}>Click me to add</button>
+            <button onClick={animelistdata.getAnimeList(2)}>Click me to add</button>
             <button onClick={animelistdata.checkAnimeList}>Click me senpai</button>
             <AnimeItem />
         </div>
