@@ -41,7 +41,4 @@ export const AnimeListData = types
     checkAnimeList() {
         console.log(getSnapshot(self.AnimeData))
     },
-    checkTest() {
-        console.log("test")
-    }
 }))
