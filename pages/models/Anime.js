@@ -22,11 +22,15 @@ export const AnimeData = types.model({
 
 export const AnimeListData = types
 .model({
-    AnimeData: types.optional(types.array(AnimeData), [])
+    AnimeData: types.optional(types.array(AnimeData), []),
+    page: types.optional(types.number, 1),
+    search: types.maybeNull(types.string)
 })
 .actions(self => ({
-    getAnimeList(page) {
-        const {loading, error, data} = useQuery(ANIME_QUERIES.GET_ANIME_LIST(page))
+    getAnimeList(page = 1, search) {
+        const {data} = useQuery(ANIME_QUERIES.GET_ANIME_LIST, {
+            variables: { page, search }
+        })
         if (data) {
             self.AnimeData = []
             data.Page.media.map(anime => {
@@ -36,5 +40,8 @@ export const AnimeListData = types
     },
     checkAnimeList() {
         console.log(getSnapshot(self.AnimeData))
+    },
+    checkTest() {
+        console.log("test")
     }
 }))

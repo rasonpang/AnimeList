@@ -1,10 +1,10 @@
 import { gql } from "apollo-boost";
 
 const ANIME_QUERIES = {
-    GET_ANIME_LIST: (page, search = null) => gql`
-        query {
-            Page(page: ${page}, perPage: 3) {
-                media(search: ${(search === "") ? null : search}) {
+    GET_ANIME_LIST: gql`
+        query ($page: Int, $search: String) {
+            Page(page: $page, perPage: 3) {
+                media(search: $search) {
                     id
                     title {
                         native
@@ -20,7 +20,7 @@ const ANIME_QUERIES = {
                 }
             }
         }
-    `,
+    `
 }
 
 export default ANIME_QUERIES
