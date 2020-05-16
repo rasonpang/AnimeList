@@ -26,7 +26,8 @@ const Home = () => {
     
     return (
         <Layout>
-            <Pagination setPage={refetch} lastPage={animelistdata.getLastPage} />
+            <Searchbar refetch={refetch} setSearch={animelistdata.setSearch} />
+            <Pagination refetch={refetch} lastPage={animelistdata.getLastPage} />
             <AnimeItemList animeList={animelistdata.getAnimeList} />
         </Layout>
     )

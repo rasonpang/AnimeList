@@ -1,13 +1,13 @@
 import { observer } from "mobx-react"
 
-const Pagination = ({ setPage, lastPage }) => {
+const Pagination = ({ refetch, lastPage }) => {
     let changePageTimer = null
 
     const changePage = value => {
         clearTimeout(changePageTimer)
         changePageTimer = setTimeout(() => {
             const pageValue = (value === "") ? 1 : parseInt(value)
-            setPage({page: pageValue})
+            refetch({page: pageValue})
         }, 1000)
     }
 
