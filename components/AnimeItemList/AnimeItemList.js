@@ -1,5 +1,11 @@
-import AnimeItem from "../AnimeItem/AnimeItem"
+// MODULE
 import { observer } from "mobx-react"
+
+// CSS
+import styles from "./styles.module.css"
+
+// COMPONENTS
+import AnimeItem from "../AnimeItem/AnimeItem"
 
 const AnimeItemList = ({ animeList }) => {
     if ( animeList().length <= 0 ) {
@@ -7,7 +13,17 @@ const AnimeItemList = ({ animeList }) => {
     }
     else {
         return (
-            animeList().map((animeData, index) => <AnimeItem key={index} animeData={animeData} />)
+            <div className={styles.container}>
+                {
+                    animeList().map(
+                        (animeData, index) =>
+                        <AnimeItem
+                            key={index}
+                            animeData={animeData}
+                        />
+                    )
+                }
+            </div>
         )
     }
 }

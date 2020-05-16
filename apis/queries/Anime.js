@@ -24,6 +24,26 @@ const ANIME_QUERIES = {
                 }
             }
         }
+    `,
+    GET_ANIME_CHARACTER: gql`
+        query {
+            Media(id: 1) {
+                characters {
+                    nodes {
+                        name {
+                            first
+                            last
+                            full
+                            native
+                        }
+                        image {
+                            large
+                            medium
+                        }
+                    }
+                }
+            }
+        }
     `
 }
 

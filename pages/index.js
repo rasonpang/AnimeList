@@ -39,13 +39,18 @@ const Home = () => {
     
     return (
         <Layout>
-            <Searchbar refetch={refetch} setSearch={animelistdata.setSearch} />
+            <Searchbar
+                refetch={refetch}
+                setSearch={animelistdata.setSearch}
+            />
             <Pagination
                 refetch={refetch}
                 currentPage={animelistdata.getCurrentPage}
                 lastPage={animelistdata.getLastPage}
             />
-            <AnimeItemList animeList={animelistdata.getAnimeList} />
+            <AnimeItemList
+                animeList={animelistdata.getAnimeList}
+            />
         </Layout>
     )
 }
