@@ -1,4 +1,5 @@
 import Link from "next/link"
+import styles from "./styles.module.css"
 
 const AnimeItem = ({ animeData }) => {
     
@@ -16,7 +17,6 @@ const AnimeItem = ({ animeData }) => {
             <div>
                 <img src={extraLarge} />
                 <div>
-                    {/* Sticky English Title */}
                     <h4>{title.english}</h4>
                     <div>
                         <div>{title.native} ({title.romaji})</div>
@@ -26,6 +26,20 @@ const AnimeItem = ({ animeData }) => {
                 </div>
             </div>
         </Link>
+    )
+
+    return (
+        <div className={styles.card}>
+            {/* IMAGE CONTAINER */}
+            <div>
+                <img src={extraLarge} />
+            </div>
+
+            {/* DETAIL CONTAINER */}
+            <div>
+                
+            </div>
+        </div>
     )
 }
 
