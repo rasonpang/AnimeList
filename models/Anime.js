@@ -19,7 +19,7 @@ export const AnimeData = types.model({
 export const AnimeListData = types
 .model({
     animeList: types.optional(types.array(AnimeData), []),
-    page: 1,
+    currentPage: 1,
     lastPage: types.optional(types.number, 1),
     search: types.maybeNull(types.string)
 })
@@ -27,14 +27,11 @@ export const AnimeListData = types
     setAnimeList(animeList) {
         self.animeList = animeList
     },
-    clearAnimeList() {
-        self.animeList = []
-    },
-    setPage(page) {
-        self.page = page
-    },
     setSearch(search) {
         self.search = search
+    },
+    setCurrentPage(page) {
+        self.currentPage = page
     },
     setLastPage(page) {
         self.lastPage = page
@@ -44,11 +41,11 @@ export const AnimeListData = types
     getAnimeList() {
         return self.animeList
     },
-    getPage() {
-        return self.page
-    },
     getSearch() {
         return self.search
+    },
+    getCurrentPage() {
+        return self.currentPage
     },
     getLastPage() {
         return self.lastPage

@@ -17,17 +17,34 @@ const Home = () => {
 
     const animelistdata = AnimeListData.create()
 
-    const {loading, error, data, refetch} = useQuery(ANIME_QUERIES.GET_ANIME_LIST, {variables: {page: 1, search: "Gundam"}})
+    const {loading, error, data, refetch} = useQuery(
+        ANIME_QUERIES.GET_ANIME_LIST,
+        {
+            variables: {
+                page: 1,
+                search: null
+            }
+        }
+    )
 
     if (data) {
-        animelistdata.setAnimeList(data.Page.media)
-        animelistdata.setLastPage(data.Page.pageInfo.lastPage)
+        const {
+            Page: {
+                media, pageInfo
+            }            
+        } = data
+        animelistdata.setAnimeList(media)
+        animelistdata.setLastPage(pageInfo.lastPage)
     }
     
     return (
         <Layout>
             <Searchbar refetch={refetch} setSearch={animelistdata.setSearch} />
-            <Pagination refetch={refetch} lastPage={animelistdata.getLastPage} />
+            <Pagination
+                refetch={refetch}
+                currentPage={animelistdata.getCurrentPage}
+                lastPage={animelistdata.getLastPage}
+            />
             <AnimeItemList animeList={animelistdata.getAnimeList} />
         </Layout>
     )
