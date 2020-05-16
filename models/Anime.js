@@ -1,9 +1,5 @@
-// API
-import ANIME_QUERIES from "../apis/queries/Anime"
-
 // OTHERS
 import { types, getSnapshot } from "mobx-state-tree"
-import { useQuery } from "@apollo/react-hooks"
 
 export const AnimeData = types.model({
     id: types.number,
@@ -15,30 +11,46 @@ export const AnimeData = types.model({
     coverImage: types.model({
         extraLarge: types.string
     }),
-    meanScore: types.number,
+    meanScore: types.maybeNull(types.number),
     popularity: types.number,
-    episodes: types.number
+    episodes: types.maybeNull(types.number)
 })
 
 export const AnimeListData = types
 .model({
-    AnimeData: types.optional(types.array(AnimeData), []),
-    page: types.optional(types.number, 1),
+    animeList: types.optional(types.array(AnimeData), []),
+    page: 1,
+    lastPage: types.optional(types.number, 1),
     search: types.maybeNull(types.string)
 })
 .actions(self => ({
-    getAnimeList(page = 1, search) {
-        const {data} = useQuery(ANIME_QUERIES.GET_ANIME_LIST, {
-            variables: { page, search }
-        })
-        if (data) {
-            self.AnimeData = []
-            data.Page.media.map(anime => {
-                self.AnimeData.push(anime)
-            })
-        }
+    setAnimeList(animeList) {
+        self.animeList = animeList
     },
-    checkAnimeList() {
-        console.log(getSnapshot(self.AnimeData))
+    clearAnimeList() {
+        self.animeList = []
     },
+    setPage(page) {
+        self.page = page
+    },
+    setSearch(search) {
+        self.search = search
+    },
+    setLastPage(page) {
+        self.lastPage = page
+    }
+}))
+.views(self => ({
+    getAnimeList() {
+        return self.animeList
+    },
+    getPage() {
+        return self.page
+    },
+    getSearch() {
+        return self.search
+    },
+    getLastPage() {
+        return self.lastPage
+    }
 }))

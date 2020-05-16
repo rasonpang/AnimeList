@@ -1,6 +1,6 @@
-const Searchbar = ({searchFunction}) => {
+const Searchbar = () => {
     return (
-        <input type="text" onChange={e => { searchFunction }} />
+        <input type="text" />
     )
 }
 

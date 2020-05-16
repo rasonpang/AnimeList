@@ -4,6 +4,10 @@ const ANIME_QUERIES = {
     GET_ANIME_LIST: gql`
         query ($page: Int, $search: String) {
             Page(page: $page, perPage: 3) {
+                pageInfo {
+                    currentPage,
+                    lastPage
+                }
                 media(search: $search) {
                     id
                     title {

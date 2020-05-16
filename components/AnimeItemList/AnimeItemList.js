@@ -1,20 +1,15 @@
 import AnimeItem from "../AnimeItem/AnimeItem"
+import { observer } from "mobx-react"
 
-const AnimeItemList = ({AnimeCollection}) => {
-    if (!AnimeCollection || AnimeCollection.length <= 0) {
-        return (<div>No result found.</div>)
+const AnimeItemList = ({ animeList }) => {
+    if ( animeList().length <= 0 ) {
+        return <div>No result found.</div>
     }
     else {
         return (
-            <div>
-                {
-                    AnimeCollection.map(data => {
-                        return <AnimeItemList data={data} />
-                    })
-                }
-            </div>
+            animeList().map((animeData, index) => <AnimeItem key={index} animeData={animeData} />)
         )
     }
 }
 
-export default AnimeItemList
+export default observer(AnimeItemList)
