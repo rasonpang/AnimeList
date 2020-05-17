@@ -1,6 +1,7 @@
 import { observer } from "mobx-react"
+import styles from "./styles.module.css"
 
-const Pagination = ({ refetch, currentPage, lastPage }) => {
+const Pagination = ({ refetch, lastPage }) => {
     let changePageTimer = null
 
     const changePage = (value) => {
@@ -12,8 +13,9 @@ const Pagination = ({ refetch, currentPage, lastPage }) => {
     }
 
     return (
-        <div>
+        <div id={styles.container}>
             <input
+                id={styles.input}
                 type="number"
                 min="1"
                 defaultValue={1}
@@ -31,7 +33,7 @@ const Pagination = ({ refetch, currentPage, lastPage }) => {
                     }
                 }}
                 />
-            <p> out of { lastPage() }</p>
+            <p id={styles.page}> out of { lastPage() }</p>
         </div>
     )
 }

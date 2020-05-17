@@ -1,5 +1,3 @@
-import { useEffect } from "react"
-
 // API
 import { useQuery } from "@apollo/react-hooks"
 import ANIME_QUERIES from "../apis/queries/Anime"
@@ -39,16 +37,22 @@ const Home = () => {
     
     return (
         <Layout>
-            <Searchbar
-                refetch={refetch}
-                setSearch={animelistdata.setSearch}
-            />
-            <Pagination
-                refetch={refetch}
-                currentPage={animelistdata.getCurrentPage}
-                lastPage={animelistdata.getLastPage}
-            />
+            <div style={{
+                width: "100%",
+                textAlign: "center"
+            }}>
+                <Searchbar
+                    refetch={refetch}
+                    setSearch={animelistdata.setSearch}
+                />
+                <Pagination
+                    refetch={refetch}
+                    currentPage={animelistdata.getCurrentPage}
+                    lastPage={animelistdata.getLastPage}
+                />
+            </div>
             <AnimeItemList
+                loading={loading}
                 animeList={animelistdata.getAnimeList}
             />
         </Layout>

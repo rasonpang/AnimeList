@@ -22,29 +22,26 @@ const AnimeItem = ({ animeData }) => {
                     <h4 className={styles.cardTitle}>
                         {(title.english) ? title.english : title.romaji}
                     </h4>
+
                     <div className={styles.cardDetail}>
-                        {/* GRID */}
                         <div className={styles.cardDetailWrapper}>
+
                             <div>Title</div>
-                            <div
-                                className={styles.cardDetailTitle}
-                            >
-                                {title.native}
+                            <div className={styles.cardDetailTitle}>
+                                {(title.native) ? (title.native) : "No data listed."}
                             </div>
                             
                             <div>Episodes</div>
-                            <div>{episodes}</div>
+                            <div>{(episodes) ? (episodes) : "No data listed."}</div>
                             
                             <div>Score</div>
                             <div>
-                                {(meanScore + "% from " + popularity + " peoples")}
+                                {(meanScore && popularity) ? (meanScore + "% from " + popularity + " peoples") : "No data listed."}
                             </div>
                             
                             <div>Description</div>
-                            <div
-                                className={styles.cardDetailDescription}
-                            >
-                                {description}
+                            <div className={styles.cardDetailDescription}>
+                                {(description) ? (description) : "No data listed."}
                             </div>
                         </div>
 

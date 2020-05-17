@@ -7,5 +7,8 @@
     background-color: rgb(230, 230, 230);
 }
 
-@media only screen and (min-width: 640px) {
+.fullcenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
