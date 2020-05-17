@@ -13,7 +13,8 @@ export const AnimeData = types.model({
     }),
     meanScore: types.maybeNull(types.number),
     popularity: types.number,
-    episodes: types.maybeNull(types.number)
+    episodes: types.maybeNull(types.number),
+    description: types.maybeNull(types.string)
 })
 
 export const AnimeListData = types

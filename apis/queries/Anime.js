@@ -3,7 +3,7 @@ import { gql } from "apollo-boost";
 const ANIME_QUERIES = {
     GET_ANIME_LIST: gql`
         query ($page: Int, $search: String) {
-            Page(page: $page, perPage: 3) {
+            Page(page: $page, perPage: 30) {
                 pageInfo {
                     currentPage,
                     lastPage
@@ -21,6 +21,7 @@ const ANIME_QUERIES = {
                     meanScore
                     popularity
                     episodes
+                    description
                 }
             }
         }

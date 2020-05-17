@@ -9,35 +9,47 @@ const AnimeItem = ({ animeData }) => {
         title,
         episodes,
         meanScore,
-        popularity
+        popularity,
+        description
     } = animeData
 
     return (
-        <Link href="#">
-            <div>
-                <img src={extraLarge} />
-                <div>
-                    <h4>{title.english}</h4>
-                    <div>
-                        <div>{title.native} ({title.romaji})</div>
-                        <div>has {episodes} episodes</div>
-                        <div>total {meanScore}% from {popularity} peoples</div>
+        <div className={styles.card}>
+            <img className={styles.cardBackground} src={extraLarge} />
+            <div className={styles.detailContainer}>
+                <div className={styles.detailWrapper}>
+
+                    <h4 className={styles.cardTitle}>
+                        {(title.english) ? title.english : title.romaji}
+                    </h4>
+                    <div className={styles.cardDetail}>
+                        {/* GRID */}
+                        <div className={styles.cardDetailWrapper}>
+                            <div>Title</div>
+                            <div
+                                className={styles.cardDetailTitle}
+                            >
+                                {title.native}
+                            </div>
+                            
+                            <div>Episodes</div>
+                            <div>{episodes}</div>
+                            
+                            <div>Score</div>
+                            <div>
+                                {(meanScore + "% from " + popularity + " peoples")}
+                            </div>
+                            
+                            <div>Description</div>
+                            <div
+                                className={styles.cardDetailDescription}
+                            >
+                                {description}
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-        </Link>
-    )
-
-    return (
-        <div className={styles.card}>
-            {/* IMAGE CONTAINER */}
-            <div>
-                <img src={extraLarge} />
-            </div>
-
-            {/* DETAIL CONTAINER */}
-            <div>
-                
             </div>
         </div>
     )
