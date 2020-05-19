@@ -1,54 +1,56 @@
+"use strict";
+exports.__esModule = true;
+exports.AnimeListData = exports.AnimeData = void 0;
 // OTHERS
-import { types, getSnapshot } from "mobx-state-tree"
-
-export const AnimeData = types.model({
-    id: types.number,
-    title: types.model({
-        native: types.maybeNull(types.string),
-        romaji: types.maybeNull(types.string),
-        english: types.maybeNull(types.string)
+var mobx_state_tree_1 = require("mobx-state-tree");
+exports.AnimeData = mobx_state_tree_1.types.model({
+    id: mobx_state_tree_1.types.number,
+    title: mobx_state_tree_1.types.model({
+        native: mobx_state_tree_1.types.maybeNull(mobx_state_tree_1.types.string),
+        romaji: mobx_state_tree_1.types.maybeNull(mobx_state_tree_1.types.string),
+        english: mobx_state_tree_1.types.maybeNull(mobx_state_tree_1.types.string)
     }),
-    coverImage: types.model({
-        extraLarge: types.string
+    coverImage: mobx_state_tree_1.types.model({
+        extraLarge: mobx_state_tree_1.types.string
     }),
-    meanScore: types.maybeNull(types.number),
-    popularity: types.number,
-    episodes: types.maybeNull(types.number),
-    description: types.maybeNull(types.string)
-})
-
-export const AnimeListData = types
-.model({
-    animeList: types.optional(types.array(AnimeData), []),
+    meanScore: mobx_state_tree_1.types.maybeNull(mobx_state_tree_1.types.number),
+    popularity: mobx_state_tree_1.types.number,
+    episodes: mobx_state_tree_1.types.maybeNull(mobx_state_tree_1.types.number),
+    description: mobx_state_tree_1.types.maybeNull(mobx_state_tree_1.types.string)
+});
+var AnimeDataType = mobx_state_tree_1.types.array(exports.AnimeData);
+exports.AnimeListData = mobx_state_tree_1.types
+    .model({
+    animeList: mobx_state_tree_1.types.optional(mobx_state_tree_1.types.array(exports.AnimeData), []),
     currentPage: 1,
-    lastPage: types.optional(types.number, 1),
-    search: types.maybeNull(types.string)
+    lastPage: mobx_state_tree_1.types.optional(mobx_state_tree_1.types.number, 1),
+    search: mobx_state_tree_1.types.maybeNull(mobx_state_tree_1.types.string)
 })
-.actions(self => ({
-    setAnimeList(animeList) {
-        self.animeList = animeList
+    .actions(function (self) { return ({
+    setAnimeList: function (animeList) {
+        self.animeList = mobx_state_tree_1.cast(animeList);
     },
-    setSearch(search) {
-        self.search = search
+    setSearch: function (search) {
+        self.search = search;
     },
-    setCurrentPage(page) {
-        self.currentPage = page
+    setCurrentPage: function (page) {
+        self.currentPage = page;
     },
-    setLastPage(page) {
-        self.lastPage = page
+    setLastPage: function (page) {
+        self.lastPage = page;
     }
-}))
-.views(self => ({
-    getAnimeList() {
-        return self.animeList
+}); })
+    .views(function (self) { return ({
+    getAnimeList: function () {
+        return self.animeList;
     },
-    getSearch() {
-        return self.search
+    getSearch: function () {
+        return self.search;
     },
-    getCurrentPage() {
-        return self.currentPage
+    getCurrentPage: function () {
+        return self.currentPage;
     },
-    getLastPage() {
-        return self.lastPage
+    getLastPage: function () {
+        return self.lastPage;
     }
-}))
+}); });

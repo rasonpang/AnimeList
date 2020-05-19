@@ -1,6 +1,7 @@
 // STYLE
 import "./_app.css"
 
+import { AppProps } from 'next/app'
 import { ApolloClient } from "apollo-client"
 import { InMemoryCache } from "apollo-cache-inmemory"
 import { HttpLink } from "apollo-link-http"
@@ -15,7 +16,7 @@ const link = new HttpLink({
 })
 const client = new ApolloClient({ cache, link })
 
-export default function App({Component, pageProps}) {
+export default function App({Component, pageProps}: AppProps) {
     return (
         <ApolloProvider client={client}>
             <Component {...pageProps} />

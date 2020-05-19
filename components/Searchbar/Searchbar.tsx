@@ -1,9 +1,9 @@
 import styles from "./styles.module.css"
 
-const Searchbar = ({refetch, setSearch}) => {
-    let changePageTimer = null
+const Searchbar = ({refetch, setSearch} : { refetch: Function, setSearch: Function }) => {
+    let changePageTimer: NodeJS.Timeout
 
-    const changePage = value => {
+    const changePage = (value: string) => {
         clearTimeout(changePageTimer)
         changePageTimer = setTimeout(() => {
             const newSearch = (value === "") ? null : value

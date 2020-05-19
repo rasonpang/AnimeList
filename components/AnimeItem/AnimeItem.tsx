@@ -1,10 +1,9 @@
-import Link from "next/link"
 import styles from "./styles.module.css"
+import { AnimeDataInterface } from "../../interfaces/AnimeData"
 
-const AnimeItem = ({ animeData }) => {
-    
+const AnimeItem = ({ animeData } : { animeData: AnimeDataInterface }) => {
+
     const {
-        id,
         coverImage: { extraLarge },
         title,
         episodes,

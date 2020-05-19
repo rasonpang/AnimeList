@@ -17,7 +17,7 @@ const Home = () => {
     const animelistdata = AnimeListData.create()
 
     // RUN T
-    const {loading, error, data, refetch} = useQuery(
+    const {loading, data, refetch} = useQuery(
         ANIME_QUERIES.GET_ANIME_LIST,
         {
             variables: {
@@ -49,7 +49,6 @@ const Home = () => {
                 />
                 <Pagination
                     refetch={refetch}
-                    currentPage={animelistdata.getCurrentPage}
                     lastPage={animelistdata.getLastPage}
                 />
             </div>

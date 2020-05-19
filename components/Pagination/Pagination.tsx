@@ -1,10 +1,10 @@
 import { observer } from "mobx-react"
 import styles from "./styles.module.css"
 
-const Pagination = ({ refetch, lastPage }) => {
-    let changePageTimer = null
+const Pagination = ({ refetch, lastPage }: { refetch: Function, lastPage: Function }) => {
+    let changePageTimer: NodeJS.Timeout
 
-    const changePage = (value) => {
+    const changePage = (value: string) => {
         clearTimeout(changePageTimer)
         changePageTimer = setTimeout(() => {
             const pageValue = (value === "") ? 1 : parseInt(value)
@@ -21,8 +21,8 @@ const Pagination = ({ refetch, lastPage }) => {
                 defaultValue={1}
                 max={lastPage()}
                 onChange={e => {
-                    if (e.target.value < 1 && e.target.value !== "") {
-                        e.target.value = 1
+                    if (parseInt(e.target.value) < 1 && e.target.value !== "") {
+                        e.target.value = "1"
                     }
                     else if (e.target.value > lastPage()) {
                         e.target.value = lastPage()

@@ -7,7 +7,9 @@ import styles from "./styles.module.css"
 // COMPONENTS
 import AnimeItem from "../AnimeItem/AnimeItem"
 
-const AnimeItemList = ({ animeList, loading }) => {
+import { AnimeDataInterface } from "../../interfaces/AnimeData"
+
+const AnimeItemList = ({ animeList, loading } : { animeList: Function, loading: boolean }) => {
     if ( loading ) {
         return (
             <div className={styles.fullcenter}>
@@ -27,7 +29,7 @@ const AnimeItemList = ({ animeList, loading }) => {
             <div className={styles.container}>
                 {
                     animeList().map(
-                        (animeData, index) =>
+                        (animeData: AnimeDataInterface, index: number) =>
                         <AnimeItem
                             key={index}
                             animeData={animeData}
