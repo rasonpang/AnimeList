@@ -9,10 +9,18 @@ import AnimeItem from "../AnimeItem/AnimeItem"
 
 const AnimeItemList = ({ animeList, loading }) => {
     if ( loading ) {
-        return <div className={styles.fullcenter}>Loading...</div>
+        return (
+            <div className={styles.fullcenter}>
+                Loading...
+            </div>
+        )
     }
     else if ( animeList().length <= 0 ) {
-        return <div className={styles.fullcenter}>No result found.</div>
+        return (
+            <div className={styles.fullcenter}>
+                No result found.
+            </div>
+        )
     }
     else {
         return (

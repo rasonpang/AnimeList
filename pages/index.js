@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/react-hooks"
 import ANIME_QUERIES from "../apis/queries/Anime"
 
 // COMPONENTS
+import Link from "next/link"
 import Layout from "../components/Layout/Layout"
 import AnimeItemList from "../components/AnimeItemList/AnimeItemList"
 import Pagination from "../components/Pagination/Pagination"
@@ -15,6 +16,7 @@ const Home = () => {
 
     const animelistdata = AnimeListData.create()
 
+    // RUN T
     const {loading, error, data, refetch} = useQuery(
         ANIME_QUERIES.GET_ANIME_LIST,
         {

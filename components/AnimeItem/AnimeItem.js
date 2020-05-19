@@ -15,13 +15,19 @@ const AnimeItem = ({ animeData }) => {
 
     return (
         <div className={styles.card}>
+
+            {/* CARD IMAGE */}
+
             <img className={styles.cardBackground} src={extraLarge} />
+
             <div className={styles.detailContainer}>
                 <div className={styles.detailWrapper}>
 
                     <h4 className={styles.cardTitle}>
                         {(title.english) ? title.english : title.romaji}
                     </h4>
+
+                    {/* CARD EXTRA DETAILS (:HOVER) */}
 
                     <div className={styles.cardDetail}>
                         <div className={styles.cardDetailWrapper}>
