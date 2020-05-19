@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "watch": "next dev"
+    "start": "next start"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
