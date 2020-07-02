@@ -2,10 +2,13 @@
   "name": "animelist",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://rasonpang.github.io",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
